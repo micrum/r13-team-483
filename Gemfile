@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'figaro'
 gem 'mysql2'
 gem 'slim-rails'
+gem 'codemirror-rails'
 
 gem 'capistrano', '~> 2.15'
 

@@ -5,4 +5,8 @@ class HomeController < ApplicationController
   def stub
 
   end
+
+  def bench
+
+  end
 end
