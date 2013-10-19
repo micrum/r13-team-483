@@ -1,8 +1,13 @@
 .benchmark-preview
   .well.well-small
-    h3 = sample_group.title
+    h3
+      = link_to sample_group.title, sample_group_path(sample_group.id)
     .description= sample_group.description
 
-    .action
-      a.btn.btn-primary href = sample_group_path(sample_group.id)
-        | Investigate!
+    .samples data-max-time=sample_group.slowest_sample
+      - sample_group.samples.each do |sample|
+        .sample
+          .sample-scale
+            .bar data-time=sample.real_time
+            span.col-lg-2.sample-time #{sample.real_time} s
+            .col-lg-10= sample.title

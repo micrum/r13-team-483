@@ -10,5 +10,9 @@ class SampleGroup < ActiveRecord::Base
     Performator.new.delay.run(self.id)
   end
 
+  def slowest_sample
+    samples.maximum(:real_time)
+  end
+
 
 end

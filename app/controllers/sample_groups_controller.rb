@@ -1,6 +1,6 @@
 class SampleGroupsController < ApplicationController
 
-  before_action :set_sample_group, only: [:show, :edit]
+  before_action :set_sample_group, only: [:show, :edit, :run]
 
 
   def index
@@ -39,6 +39,11 @@ class SampleGroupsController < ApplicationController
     end
   end
 
+
+  def run
+    @sample_group.run_benchmark
+    redirect_to sample_group_path(@sample_group)
+  end
 
   private
 
