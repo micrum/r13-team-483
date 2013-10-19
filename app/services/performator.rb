@@ -6,7 +6,9 @@ require 'yaml'
 class Performator
   RUBY = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['ruby_install_name'])
 
-  def run(sample_group)
+  def run(sample_group_id)
+    sample_group = SampleGroup.find(sample_group_id)
+
     sample_group.samples.each do |sample|
       run_sample(sample)
     end

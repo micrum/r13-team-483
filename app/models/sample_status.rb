@@ -1,9 +1,9 @@
-class SampleStatus < EnumerateIt::Base
-  associate_values(
-      :pending   => [1, 'Pending'],
-      :running   => [2, 'Running'],
-      :completed => [3, 'Completed'],
-      :error     => [4, 'Error'],
-      :timeout   => [5, 'Timeout']
-  )
+class SampleStatus
+
+  PENDING   = 1
+  RUNNING   = 2
+  COMPLETED = 3
+  ERROR     = 4
+  TIMEOUT   = 5
+
 end
