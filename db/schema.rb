@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20131019095326) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sample_group_id"
-    t.string   "code"
+    t.text     "code"
   end
 
 end
