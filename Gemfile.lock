@@ -57,6 +57,11 @@ GEM
     coffee-script-source (1.6.3)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
+    delayed_job (4.0.0)
+      activesupport (>= 3.0, < 4.1)
+    delayed_job_active_record (4.0.0)
+      activerecord (>= 3.0, < 4.1)
+      delayed_job (>= 3.0, < 4.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -179,6 +184,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner (= 1.0.1)
+  delayed_job_active_record
   fabrication
   figaro
   jbuilder (~> 1.2)

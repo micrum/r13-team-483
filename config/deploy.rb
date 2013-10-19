@@ -39,16 +39,16 @@ LINODE_SERVER_HOSTNAME = '212.71.239.158'
 
 # General Options
 
-set :bundle_flags, "--deployment"
+set :bundle_flags, '--deployment'
 
-set :application, "railsrumble"
-set :deploy_to, "/var/www/apps/railsrumble"
+set :application, 'railsrumble'
+set :deploy_to, '/var/www/apps/railsrumble'
 set :normalize_asset_timestamps, false
-set :rails_env, "production"
+set :rails_env, 'production'
 
-set :user, "root"
-set :runner, "www-data"
-set :admin_runner, "www-data"
+set :user, 'root'
+set :runner, 'www-data'
+set :admin_runner, 'www-data'
 
 # Password-less Deploys (Optional)
 #
@@ -64,7 +64,7 @@ set :admin_runner, "www-data"
 # SCM Options
 set :scm, :git
 set :repository, "git@github.com:railsrumble/#{GITHUB_REPOSITORY_NAME}.git"
-set :branch, "master"
+set :branch, 'master'
 
 # Roles
 role :app, LINODE_SERVER_HOSTNAME
@@ -90,3 +90,8 @@ deploy.task :restart, :roles => :app do
 # Restart Application
   run "touch #{current_path}/tmp/restart.txt"
 end
+
+
+after 'deploy:stop', 'delayed_job:stop'
+after 'deploy:start', 'delayed_job:start'
+after 'deploy:restart', 'delayed_job:restart'
