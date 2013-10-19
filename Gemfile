@@ -11,6 +11,8 @@ gem 'figaro'
 gem 'mysql2'
 gem 'slim-rails'
 gem 'codemirror-rails'
+gem 'simple_form'
+gem 'nested_form'
 
 gem 'capistrano', '~> 2.15'
 
