@@ -1,5 +1,5 @@
 class Performator
-  def run sample_group
+  def run(sample_group)
     sample_group.samples.each do |sample|
       run_sample sample
     end
@@ -7,7 +7,7 @@ class Performator
 
   private
 
-  def run_sample sample
+  def run_sample(sample)
     sample.sys_time = rand(100)/100.0
     sample.user_time = rand(100)/100.0
     sample.real_time = rand(100)/100.0

@@ -7,7 +7,7 @@ describe Performator do
     let(:sample_group) { Fabricate(:sample_group) }
 
     it "stores something in columns" do
-      perf.run sample_group
+      perf.run(sample_group)
       sample_group.reload
 
       sample_group.samples.each do |sample|
