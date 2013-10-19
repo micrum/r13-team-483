@@ -33,3 +33,5 @@ RubyBench::Application.configure do
   # Precompile additional assets
   config.assets.precompile += %w( .svg .eot .woff .ttf )
 end
+
+Slim::Engine.default_options[:pretty] = true
