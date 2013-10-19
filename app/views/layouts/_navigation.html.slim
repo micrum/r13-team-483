@@ -1,1 +1,4 @@
-= link_to "Ruby Bench", root_path, :class => 'navbar-brand'
+ul class="nav navbar-nav"
+ li = link_to "Ruby Bench", root_path, :class => 'navbar-brand'
+ li = link_to 'New Sample', new_sample_group_path, :class => 'dropdown'
+ li = link_to 'Benchmarks', sample_groups_path
