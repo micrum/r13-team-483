@@ -1,0 +1,21 @@
+h1 Listing sample_groups
+
+table
+  tr
+    th Title
+    th Description
+    th
+    th
+    th
+
+  - @sample_groups.each do |sample_group|
+    tr
+      td = sample_group.title
+      td = sample_group.description
+      td = link_to 'Show', sample_group
+      td = link_to 'Edit', edit_sample_group_path(sample_group)
+      td = link_to 'Destroy', sample_group, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Sample group', new_sample_group_path

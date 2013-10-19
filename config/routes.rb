@@ -1,3 +1,6 @@
 RubyBench::Application.routes.draw do
-  root :to => "home#index"
+
+  resources :sample_groups
+
+  root :to => 'home#index'
 end

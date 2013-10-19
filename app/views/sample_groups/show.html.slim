@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @sample_group.title
+p
+  strong Description:
+  = @sample_group.description
+
+= link_to 'Edit', edit_sample_group_path(@sample_group)
+'|
+= link_to 'Back', sample_groups_path
