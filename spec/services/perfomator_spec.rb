@@ -42,7 +42,7 @@ describe Performator do
   describe '#run_sample' do
     let(:sample) { Fabricate(:sample) }
 
-    it 'updated sys_time, user_time, real_time columns' do
+    it 'updates sys_time, user_time, real_time columns' do
       perf.send(:run_sample, sample)
       expect(sample.sys_time).to be >= 0
       expect(sample.user_time).to be >= 0
