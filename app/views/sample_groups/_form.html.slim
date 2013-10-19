@@ -7,19 +7,17 @@
           li = message
 
   .field
-
     = f.text_field :title, class: "form-control groups", placeholder: "title "
+
   .field
     = f.text_area :description, class: "form-control input-lg groups", placeholder: "add code "
 
+  .field
+    = render :partial => 'sample_groups/samples', :locals => {:f => f}
 
-    = f.fields_for :samples do |s|
-      .form-inline.single-line.with-labels
-        = s.text_field :title
-        = s.text_area :description
-          = f.link_to_add 'Add another code', :samples, :class => "btn" do
-            = icon_label(:plus, 'Add', :white => false)
-          = f.link_to_remove 'Remove'
+  = f.link_to_add :samples, :class => "btn btn-primary", :id => :add_sample_btn do
+    = icon_label('plus', 'Add', :white => false)
+
   .actions = f.submit 'Benchmark!', class: "btn btn-lg btn-success centered groups"
 
 
