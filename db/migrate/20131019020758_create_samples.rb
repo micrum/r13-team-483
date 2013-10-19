@@ -3,7 +3,7 @@ class CreateSamples < ActiveRecord::Migration
     create_table :samples do |t|
 
       t.string :title
-      t.status :integer
+      t.integer :status
 
       t.integer :iterations_count
       t.float :sys_time
