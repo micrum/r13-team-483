@@ -42,6 +42,7 @@ describe Performator do
   describe '#run_sample' do
     let(:sample) { Fabricate(:sample) }
     let(:bad_sample) { Fabricate(:bad_sample) }
+    let(:timeout_sample) { Fabricate(:timeout_sample) }
 
     it 'updates sys_time, user_time, real_time columns' do
       perf.send(:run_sample, sample)
@@ -59,6 +60,13 @@ describe Performator do
     it 'sets ERROR status for bad code' do
       perf.send(:run_sample, bad_sample)
       expect(bad_sample.status).to eq(SampleStatus::ERROR)
+    end
+
+    it 'sets TIMEOUT status for long running code' do
+      perf.send(:run_sample, timeout_sample)
+      sleep(Performator::TIMEOUT + 1)
+      timeout_sample.reload
+      expect(timeout_sample.status).to eq(SampleStatus::TIMEOUT)
     end
   end
 

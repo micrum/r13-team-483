@@ -15,3 +15,17 @@ end
 Fabricator(:bad_sample, from: :sample) do
   code 'some invalid code'
 end
+
+Fabricator(:timeout_sample, from: :sample) do
+  code <<CODE
+# benchmark
+
+while true
+  sleep(1)
+end
+
+CODE
+
+end
+
+
