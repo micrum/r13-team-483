@@ -5,7 +5,7 @@ class SampleGroupsController < ApplicationController
   # GET /samples
   # GET /samples.json
   def index
-    @sample_groups = SampleGroup.all
+    @sample_groups = SampleGroup.last(6)
   end
 
   # GET /samples/1
@@ -46,7 +46,7 @@ class SampleGroupsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def sample_group_params
-    params[:sample_group]
+    params[:sample_group].permit(:title, :description)
   end
 
 end
