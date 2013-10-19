@@ -2,6 +2,8 @@ class SampleGroupsController < ApplicationController
 
   before_action :set_sample_group, only: [:show, :edit]
 
+
+
   # GET /samples
   # GET /samples.json
   def index
@@ -38,15 +40,16 @@ class SampleGroupsController < ApplicationController
     end
   end
 
+
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_sample_group
     @sample_group = SampleGroup.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def sample_group_params
-    params[:sample_group].permit(:title, :description)
+    params[:sample_group].permit(:title, :description,
+                                 samples_attributes: [:title, :code])
   end
 
 end

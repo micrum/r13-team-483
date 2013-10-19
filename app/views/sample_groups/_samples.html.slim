@@ -1,6 +1,11 @@
 = f.fields_for :samples do |ef|
-  .form-inline.single-line.with-labels
-    .field = ef.text_field :title, class: "form-control groups", placeholder: "title "
-    .field = ef.text_area :code, class: "form-control input-lg groups", placeholder: "add code "
+  .benchmark-sample.well
+    .form-group
+      = ef.label :title, 'Code sample title', class: 'col-lg-2 control-label'
+      .col-lg-10
+        = ef.text_field :title, class: 'form-control', placeholder: 'Code sample title'
 
-  hr
+    .form-group
+      = ef.label :code, 'Code sample', class: 'col-lg-2 control-label'
+      .col-lg-10
+        = ef.text_area :code, class: 'form-control'

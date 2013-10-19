@@ -1,6 +1,5 @@
-= simple_nested_form_for  @sample_group do |f|
-  h1 new benchmark
+h1 new benchmark
 
-  = render :partial => 'sample_groups/form', :locals => {:sample_group => @sample_group}
+= render partial: 'sample_groups/form'
 
-  = link_to 'Back', sample_groups_path
+= link_to 'Back', sample_groups_path
