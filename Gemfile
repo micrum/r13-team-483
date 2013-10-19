@@ -14,6 +14,7 @@ gem 'codemirror-rails'
 
 gem 'capistrano', '~> 2.15'
 
+gem 'daemons'
 gem 'delayed_job_active_record'
 
 group :development do
