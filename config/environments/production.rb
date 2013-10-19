@@ -79,7 +79,7 @@ RubyBench::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Add the fonts path
-  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+  config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 
   # Precompile additional assets
   config.assets.precompile += %w( .svg .eot .woff .ttf )
