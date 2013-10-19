@@ -18,6 +18,7 @@ gem 'capistrano', '~> 2.15'
 
 gem 'daemons'
 gem 'delayed_job_active_record'
+gem 'ruby_cop'
 
 group :development do
   gem 'puma'

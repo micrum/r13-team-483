@@ -68,6 +68,27 @@ describe Performator do
       timeout_sample.reload
       expect(timeout_sample.status).to eq(SampleStatus::TIMEOUT)
     end
+
+    it 'sets ERROR status for unsafe code `rm *`' do
+      unsafe_sample = Fabricate(:unsafe_sample_1)
+      perf.send(:run_sample, unsafe_sample)
+      expect(unsafe_sample.status).to eq(SampleStatus::ERROR)
+      expect(unsafe_sample.error).to include('Unsafe')
+    end
+
+    it 'sets ERROR status for unsafe code system("rm *")' do
+      unsafe_sample = Fabricate(:unsafe_sample_2)
+      perf.send(:run_sample, unsafe_sample)
+      expect(unsafe_sample.status).to eq(SampleStatus::ERROR)
+      expect(unsafe_sample.error).to include('Unsafe')
+    end
+
+    it 'sets ERROR status for unsafe code File.read("/etc/passwd")' do
+      unsafe_sample = Fabricate(:unsafe_sample_3)
+      perf.send(:run_sample, unsafe_sample)
+      expect(unsafe_sample.status).to eq(SampleStatus::ERROR)
+      expect(unsafe_sample.error).to include('Unsafe')
+    end
   end
 
 end

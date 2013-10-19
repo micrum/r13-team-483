@@ -3,6 +3,7 @@ require 'tempfile'
 require 'rbconfig'
 require 'yaml'
 require 'timeout'
+require 'ruby_cop'
 
 class Performator
   RUBY = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['ruby_install_name'])
@@ -78,6 +79,11 @@ class Performator
 
   def parse_code(code)
     raise 'Please keep comments in the code' if !code.include?('# benchmark')
+
+    policy = RubyCop::Policy.new
+    ast = RubyCop::NodeBuilder.build(code)
+    raise 'Unsafe code!' unless ast.accept(policy)
+
     h = {}
     h[:init], h[:bench] = code.gsub('(do not delete the comment)', '').split('# benchmark')
     h
