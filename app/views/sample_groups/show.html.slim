@@ -1,11 +1,9 @@
-p#notice = notice
+h2= @sample_group.title
+p= @sample_group.description
 
-p
-  strong Title:
-  = @sample_group.title
-p
-  strong Description:
-  = @sample_group.description
+- @sample_group.samples.each do |sample|
+  = render partial: 'sample', locals: {sample: sample}
+
 
 = link_to 'Edit', edit_sample_group_path(@sample_group)
 '|
