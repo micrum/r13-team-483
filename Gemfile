@@ -29,3 +29,9 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner', '1.0.1'
 end
+
+gem 'capistrano', '~> 2.15'
+
+group :production do
+  gem 'therubyracer'
+end
