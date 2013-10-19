@@ -1,3 +1,3 @@
-Rubybench::Application.routes.draw do
-  devise_for :users
+RubyBench::Application.routes.draw do
+  root :to => "home#index"
 end
