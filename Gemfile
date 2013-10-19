@@ -9,10 +9,14 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'figaro'
 gem 'mysql2'
-gem 'puma'
 gem 'slim-rails'
 
+gem 'capistrano', '~> 2.15'
+
+gem 'delayed_job_active_record'
+
 group :development do
+  gem 'puma'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'quiet_assets'
@@ -27,4 +31,8 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner', '1.0.1'
+end
+
+group :production do
+  gem 'therubyracer'
 end
