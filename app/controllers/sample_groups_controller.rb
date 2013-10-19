@@ -1,6 +1,6 @@
 class SampleGroupsController < ApplicationController
 
-  before_action :set_sample_group, only: [:show, :edit]
+  before_action :set_sample_group, only: [:show, :edit, :run]
 
 
   def index
@@ -8,27 +8,28 @@ class SampleGroupsController < ApplicationController
   end
 
 
-  # GET /samples/1
-  # GET /samples/1.json
   def show
   end
 
-  # GET /samples/new
+
   def new
     @sample_group = SampleGroup.new
+    2.times { @sample_group.samples.build }
   end
 
-  # GET /samples/1/edit
+
   def edit
   end
 
-  # POST /samples
-  # POST /samples.json
+
   def create
     @sample_group = SampleGroup.new(sample_group_params)
 
     respond_to do |format|
       if @sample_group.save
+
+        @sample_group.run_benchmark
+
         format.html { redirect_to @sample_group, notice: 'Sample was successfully created.' }
         format.json { render action: 'show', status: :created, location: @sample_group }
       else
@@ -43,6 +44,11 @@ class SampleGroupsController < ApplicationController
     @data = sample_group.samples_results
   end
 
+
+  def run
+    @sample_group.run_benchmark
+    redirect_to sample_group_path(@sample_group)
+  end
 
   private
 

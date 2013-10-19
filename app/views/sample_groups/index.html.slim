@@ -1,6 +1,6 @@
 .jumbotron
-  h1 Benchmark your Ruby code online!
-  p.lead As easy, as 1-2-3. Just click on a button below and add Ruby code samples which performance you want to compare.
+  h1 Measure speed of your Ruby code online!
+  p.lead Just click the button below and add Ruby code samples you want to compare.
   p
     a.btn.btn-lg.btn-success.centered href=new_sample_group_path Benchmark my code!
 
@@ -10,3 +10,10 @@ h2 Latest benchmarks
 .benchmarks.col-lg-16
   - @sample_groups.each do |sample_group|
     = render partial: 'sample_gorup', locals: {sample_group: sample_group}
+
+
+- content_for :js
+  coffee:
+    $ ->
+      App.initSampleGroupsPreview()
+      return

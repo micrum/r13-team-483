@@ -13,7 +13,6 @@ gem 'slim-rails'
 gem 'codemirror-rails'
 gem 'simple_form'
 gem 'nested_form'
-gem 'enumerate_it'
 
 gem 'capistrano', '~> 2.15'
 

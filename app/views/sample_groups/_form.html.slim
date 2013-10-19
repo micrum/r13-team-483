@@ -17,10 +17,14 @@
     .col-lg-10
       = f.text_area :description, class: 'form-control', placeholder: 'Type some description here'
 
+  #samples
+
   = render partial: 'sample_groups/samples', locals: {f: f}
+
   .form-group
-    = f.link_to_add :samples, class: 'btn btn-primary col-lg-offset-2', id: :add_sample_btn do
-      = icon_label('plus', 'Add code sample', white: false)
+    .col-lg-offset-2.col-lg-10
+      = f.link_to_add :samples, class: 'btn btn-primary', id: :add_sample_btn, data: {target: '#samples'} do
+        = icon_label('plus', 'Add code sample', white: false)
 
 
   .form-group

@@ -20,4 +20,16 @@ class SampleGroup < ActiveRecord::Base
 
   end
 
+
+  def run_benchmark
+    raise RuntimeError 'Cannot run benchmark for unsaved SampleGroup' if new_record?
+
+    Performator.new.delay.run(self.id)
+  end
+
+  def slowest_sample
+    samples.maximum(:real_time)
+  end
+
+
 end

@@ -1,0 +1,17 @@
+require 'benchmark'
+require 'yaml'
+
+<%= init  %>
+
+m = Benchmark.measure do
+<%= bench  %>
+end
+
+_,memory = `ps ax -o pid,rss | grep -E "^[[:space:]]*#{$$}"`.strip.split.map(&:to_i)
+r = {}
+r[:sys_time] = m.stime
+r[:user_time] = m.utime
+r[:real_time] = m.real
+r[:memory] = memory
+
+puts YAML.dump(r)
