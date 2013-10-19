@@ -1,0 +1,10 @@
+require 'benchmark'
+require 'yaml'
+
+<%= init  %>
+
+m = Benchmark.measure do
+<%= bench  %>
+end
+
+puts YAML.dump(m)
