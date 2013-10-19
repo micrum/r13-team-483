@@ -18,11 +18,11 @@ class Performator
     file = create_bench_file(sample)
     results = run_bench_file(file)
 
-    sample.sys_time = results.stime
-    sample.user_time = results.utime
-    sample.real_time = results.real
+    sample.sys_time = results[:sys_time]
+    sample.user_time = results[:user_time]
+    sample.real_time = results[:real_time]
+    sample.memory = results[:memory]
 
-    sample.memory = 0
     sample.iterations_count = 0
     sample.save!
   end

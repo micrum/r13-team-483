@@ -47,6 +47,7 @@ describe Performator do
       expect(sample.sys_time).to be >= 0
       expect(sample.user_time).to be >= 0
       expect(sample.real_time).to be > 0
+      expect(sample.memory).to be > 0
     end
   end
 
