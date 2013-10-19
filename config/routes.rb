@@ -4,5 +4,10 @@ RubyBench::Application.routes.draw do
 
   resources :sample_groups
 
-  root :to => 'home#index'
+  if Rails.env.production?
+    root :to => 'home#stub'
+  else
+    root :to => 'home#index'
+  end
+
 end
