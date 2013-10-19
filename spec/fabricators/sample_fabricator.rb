@@ -11,3 +11,7 @@ end
 CODE
 
 end
+
+Fabricator(:bad_sample, from: :sample) do
+  code 'some invalid code'
+end

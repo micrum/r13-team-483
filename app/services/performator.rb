@@ -17,6 +17,8 @@ class Performator
   private
 
   def run_sample(sample)
+    sample.status = SampleStatus::RUNNING
+    sample.save!
     file = create_bench_file(sample)
     results = run_bench_file(file)
 
@@ -26,6 +28,11 @@ class Performator
     sample.memory = results[:memory]
 
     sample.iterations_count = 0
+    sample.status = SampleStatus::COMPLETED
+    sample.save!
+  rescue Exception => e
+    sample.status = SampleStatus::ERROR
+    sample.error = e.message
     sample.save!
   end
 
@@ -53,6 +60,7 @@ class Performator
   end
 
   def parse_code(code)
+    raise 'Please keep comments in the code' if !code.include?('# benchmark')
     h = {}
     h[:init], h[:bench] = code.gsub('(do not delete the comment)', '').split('# benchmark')
     h
