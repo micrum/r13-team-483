@@ -1,0 +1,8 @@
+.benchmark-preview
+  .well.well-small
+    h3 = sample_group.title
+    .description= sample_group.description
+
+    .action
+      a.btn.btn-primary href = sample_group_path(sample_group.id)
+        | Investigate!

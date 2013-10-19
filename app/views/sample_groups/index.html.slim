@@ -1,16 +1,12 @@
-a.centered.btn.btn-warning.btn-lg type="button" href = new_sample_group_path
-  | Benchmark your code!
+.jumbotron
+  h1 Benchmark your Ruby code online!
+  p.lead As easy, as 1-2-3. Just click on a button below and add Ruby code samples which performance you want to compare.
+  p
+    a.btn.btn-lg.btn-success.centered href=new_sample_group_path Benchmark my code!
 
 
-.row.last_bms
+h2 Latest benchmarks
+
+.benchmarks.col-lg-16
   - @sample_groups.each do |sample_group|
-    .col-6.col-sm-6.col-lg-4
-      .thumbnail
-        h2 = sample_group.title
-        p = sample_group.description
-        p
-          a.btn.btn-primary href = sample_group_path(sample_group.id)
-            | Investigate!
-
-
-
+    = render partial: 'sample_gorup', locals: {sample_group: sample_group}

@@ -3,12 +3,10 @@ class SampleGroupsController < ApplicationController
   before_action :set_sample_group, only: [:show, :edit]
 
 
-
-  # GET /samples
-  # GET /samples.json
   def index
     @sample_groups = SampleGroup.last(6)
   end
+
 
   # GET /samples/1
   # GET /samples/1.json

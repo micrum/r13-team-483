@@ -18,10 +18,7 @@ html
 
 
     .container
-      .content
-        .row
-          .span12
-            = render 'layouts/messages'
-            = yield
-        footer
+      = render 'layouts/messages'
+      = yield
+      footer
     /! ! end of .container
