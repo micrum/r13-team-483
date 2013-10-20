@@ -1,30 +1,29 @@
 .benchmark-preview
-  .well-small
-    h3
-      = link_to sample_group.title, sample_group_path(sample_group.id)
-    .description= sample_group.description
+  h3
+    = link_to sample_group.title, sample_group_path(sample_group.id)
+  .description= sample_group.description
 
-    table class='table table-bordered sample-results'
+  table class='table table-bordered sample-results'
+    tr
+      th.time Time
+      th.memory Memory
+      th.title Title
+      th.status Status
+    - slowest = sample_group.slowest_sample
+    - largest = sample_group.largest_sample
+    - sample_group.samples.each do |sample|
       tr
-        th.time Time
-        th.memory Memory
-        th.title Title
-        th.status Status
-      - slowest = sample_group.slowest_sample
-      - largest = sample_group.largest_sample
-      - sample_group.samples.each do |sample|
-        tr
-          td.time
-            .progress
-              = format_time(sample.real_time) if calc_percentage(sample.real_time, slowest) < 40
-              .progress-bar.progress-bar-success style="width: #{calc_percentage(sample.real_time, slowest)}%;"
-                = format_time(sample.real_time) unless calc_percentage(sample.real_time, slowest) < 40
+        td.time
+          .progress
+            = format_time(sample.real_time) if calc_percentage(sample.real_time, slowest) < 40
+            .progress-bar.progress-bar-success style="width: #{calc_percentage(sample.real_time, slowest)}%;"
+              = format_time(sample.real_time) unless calc_percentage(sample.real_time, slowest) < 40
 
-          td.memory
-            .progress
-              = format_time(sample.memory) if calc_percentage(sample.memory, largest) < 40
-              .progress-bar style="width: #{calc_percentage(sample.memory, largest)}%;"
-                = number_to_human_size(sample.memory) unless calc_percentage(sample.memory, largest) < 40
+        td.memory
+          .progress
+            = format_time(sample.memory) if calc_percentage(sample.memory, largest) < 40
+            .progress-bar style="width: #{calc_percentage(sample.memory, largest)}%;"
+              = number_to_human_size(sample.memory) unless calc_percentage(sample.memory, largest) < 40
 
-          td.title= sample.title.truncate(80)
-          td.status= format_status(sample.status)
+        td.title= sample.title.truncate(80)
+        td.status= format_status(sample.status)
