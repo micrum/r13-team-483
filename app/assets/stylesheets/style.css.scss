@@ -116,7 +116,15 @@ $box-bg-color: #EDF1F5;
 
 
 
+@-webkit-keyframes rotate {
+  from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}
+}
 
+@-moz-keyframes rotate {
+  from {-moz-transform: rotate(0deg);}
+  to {-moz-transform: rotate(360deg);}
+}
 
 .rotating {
   -webkit-animation-name: rotate;
@@ -130,27 +138,23 @@ $box-bg-color: #EDF1F5;
 }
 
 
-@-webkit-keyframes rotate {
-  from {-webkit-transform: rotate(0deg);}
-  to {-webkit-transform: rotate(360deg);}
-}
-
-@-moz-keyframes rotate {
-  from {-moz-transform: rotate(0deg);}
-  to {-moz-transform: rotate(360deg);}
-}
 
 .benchmark-sample.well {
   padding: 19px 0;
 }
 
-textarea.form-control.code {
-  font-family: monospace;
+
+.jumbotron {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  text-align: center;
+
+
+  .CodeMirror {
+    font-size: 14px;
+    height: 180px;
+    margin-bottom: 16px;
+    border: 1px solid $box-border-color;
+    text-align: left;
+  }
 }
-
-.jumbotron .CodeMirror {
-  font-size: 14px;
-}
-
-
-
