@@ -1,8 +1,8 @@
 = form_for @sample do |f|
   - if @sample.errors.any?
-    #error_explanation
+    .alert.alert-danger#error_explanation
       h2 = "#{pluralize(@sample.errors.count, "error")} prohibited this sample from being saved:"
-      ul
+      ul.text-danger
         - @sample.errors.full_messages.each do |message|
           li = message
 

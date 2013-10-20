@@ -116,7 +116,15 @@ $box-bg-color: #EDF1F5;
 
 
 
+@-webkit-keyframes rotate {
+  from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}
+}
 
+@-moz-keyframes rotate {
+  from {-moz-transform: rotate(0deg);}
+  to {-moz-transform: rotate(360deg);}
+}
 
 .rotating {
   -webkit-animation-name: rotate;
@@ -130,13 +138,41 @@ $box-bg-color: #EDF1F5;
 }
 
 
-@-webkit-keyframes rotate {
-  from {-webkit-transform: rotate(0deg);}
-  to {-webkit-transform: rotate(360deg);}
+
+.benchmark-sample.well {
+  padding: 19px 0;
 }
 
-@-moz-keyframes rotate {
-  from {-moz-transform: rotate(0deg);}
-  to {-moz-transform: rotate(360deg);}
+
+.jumbotron {
+  padding-bottom: 30px;
+  padding-top: 30px;
+
+  text-align: center;
+
+
+  h1 {
+    margin-top: 0;
+    font-size: 40px;
+  }
+
+  .CodeMirror {
+    font-size: 14px;
+    height: 215px;
+    text-align: left;
+  }
 }
 
+.CodeMirror-linenumbers {
+  min-width: 37px;
+}
+
+.CodeMirror {
+  border: 1px solid $box-border-color;
+  height: auto;
+}
+
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+}

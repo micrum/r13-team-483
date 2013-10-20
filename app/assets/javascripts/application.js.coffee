@@ -15,10 +15,33 @@
 #= require bootstrap.js
 #= require turbolinks
 #= require codemirror
-#= require flotr2.min.js
+#= require codemirror/modes/ruby
 #= require jquery_nested_form
 #= require_tree .
 #= require_self
+
+
+initCodeMirror = ->
+  $('textarea.code').each (i, ta) ->
+    if $(ta).is(':visible')
+      CodeMirror.fromTextArea(ta, {
+        mode: 'ruby',
+        theme: 'default',
+        lineNumbers: true
+      });
+
+ready = ->
+  initCodeMirror()
+  $("form").on "nested:fieldAdded", (event) ->
+    event.field.find('textarea').html('\n\n\n\n\n')
+    initCodeMirror()
+
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
+
+
+
 
 
 
