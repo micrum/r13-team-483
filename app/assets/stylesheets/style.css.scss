@@ -197,16 +197,19 @@ table.sample-results {
   }
 
   td.time, td.memory  {
-    text-align: center;
+    font-size: 12px;
     .progress {
       margin-bottom: 0;
       border: 0;
       -webkit-box-shadow: none;
       box-shadow: none;
       border-radius: 0;
+      overflow: visible;
     }
     .progress-bar {
       overflow: visible;
+      white-space: nowrap;
+      margin-right: 5px;
     }
   }
 
