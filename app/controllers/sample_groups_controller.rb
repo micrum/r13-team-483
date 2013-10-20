@@ -42,6 +42,7 @@ class SampleGroupsController < ApplicationController
   def results
     sample_group = SampleGroup.find(params[:sample_group_id])
     @data = sample_group.samples_results
+    render json: @data
   end
 
 

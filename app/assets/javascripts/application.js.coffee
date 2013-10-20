@@ -15,6 +15,7 @@
 #= require bootstrap.js
 #= require turbolinks
 #= require codemirror
+#= require flotr2.min.js
 #= require jquery_nested_form
 #= require_tree .
 #= require_self
