@@ -77,8 +77,8 @@ CODE
   end
 
   def sample_group_params
-    params[:sample_group].permit(:title, :description,
-                                 samples_attributes: [:title, :code])
+    params[:sample_group].permit(:id, :title, :description,
+                                 samples_attributes: [:id, :title, :code])
   end
 
 end

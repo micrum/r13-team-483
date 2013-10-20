@@ -7,7 +7,7 @@
 
     .form-group class = (@sample_group.errors["samples.code"].blank? ? '' : 'has-error')
       abbr title="required"
-        = ef.label :code, '* Code sample', class: 'col-lg-2 control-label'
+        = ef.label :code, '* Code sample', class: 'col-lg-2 control-label', :value => 'oo'
       .col-lg-6
         = ef.text_area :code, class: 'form-control code'
 
