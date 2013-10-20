@@ -46,3 +46,41 @@ Sample.create(
 )
 
 sample_group.run_benchmark
+
+sample_group_2 = SampleGroup.create(title: 'Benchmark in benchmark',
+                                  description: 'timing ruby code')
+
+#second sample
+
+Sample.create(
+    title: 'sample timing',
+    code:
+        (beginning_time = Time.now
+        (1..10000).each { |i| i }
+        end_time = Time.now
+        puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"),
+
+    sample_group: sample_group_2
+)
+Sample.create(
+    title: 'sample with methods',
+    code:
+        (def time_method(method, *args)
+          beginning_time = Time.now
+          self.send(method, args)
+          end_time = Time.now
+          puts "Time elapsed #{(end_time - beginning_time)*1000} milliseconds"
+        end
+        def method_to_time(*args)
+          (1..10000).each { |i| i }
+        end
+
+        time_method(:method_to_time)),
+
+    sample_group: sample_group_2
+)
+
+sample_group_2.run_benchmark
+
+
+
