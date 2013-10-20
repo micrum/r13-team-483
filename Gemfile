@@ -15,6 +15,7 @@ gem 'codemirror-rails'
 gem 'simple_form'
 gem 'nested_form'
 gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
 
 gem 'capistrano', '~> 2.15'
 
