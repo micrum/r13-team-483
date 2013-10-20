@@ -1,4 +1,3 @@
-
 $box-border-color: #a8bfd9;
 $box-bg-color: #EDF1F5;
 
@@ -176,6 +175,13 @@ $box-bg-color: #EDF1F5;
   overflow-y: hidden;
   overflow-x: auto;
 }
+
+.has-error .CodeMirror.cm-s-default {
+  border-color: #b94a48;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
 
 table.sample-results {
   th.time, th.memory {

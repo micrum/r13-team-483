@@ -5,8 +5,9 @@
       .col-lg-6
         = ef.text_field :title, class: 'form-control', placeholder: 'Code sample title'
 
-    .form-group
-      = ef.label :code, 'Code sample', class: 'col-lg-2 control-label', required: true
+    .form-group class = (@sample_group.errors["samples.code"].blank? ? '' : 'has-error')
+      abbr title="required"
+        = ef.label :code, '* Code sample', class: 'col-lg-2 control-label'
       .col-lg-6
         = ef.text_area :code, class: 'form-control code'
 
