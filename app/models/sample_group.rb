@@ -18,7 +18,6 @@ class SampleGroup < ActiveRecord::Base
                           usertime: sample.user_time, memory: sample.memory}
     end
     data << {samples: samples_results}
-
   end
 
   def run_benchmark
