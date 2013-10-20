@@ -81,7 +81,7 @@
         hasPendingOrRunning = true
 
       if !hasPendingOrRunning
-        @.finishPing = true
+        that.finishPing = true
 
   pingSamples: ->
     app = @
