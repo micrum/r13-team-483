@@ -2,9 +2,12 @@ require 'erb'
 require 'tempfile'
 require 'rbconfig'
 require 'yaml'
+require 'timeout'
+require 'ruby_cop'
 
 class Performator
   RUBY = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['ruby_install_name'])
+  TIMEOUT = 2
 
   def run(sample_group_id)
     sample_group = SampleGroup.find(sample_group_id)
@@ -22,14 +25,24 @@ class Performator
     file = create_bench_file(sample)
     results = run_bench_file(file)
 
-    sample.sys_time = results[:sys_time]
-    sample.user_time = results[:user_time]
-    sample.real_time = results[:real_time]
-    sample.memory = results[:memory]
+    if results
+      if results[:timeout]
+        sample.status = SampleStatus::TIMEOUT
+      else
+        sample.sys_time = results[:sys_time]
+        sample.user_time = results[:user_time]
+        sample.real_time = results[:real_time]
+        sample.memory = results[:memory]
+        sample.iterations_count = 0
+        sample.status = SampleStatus::COMPLETED
+      end
 
-    sample.iterations_count = 0
-    sample.status = SampleStatus::COMPLETED
-    sample.save!
+      sample.save!
+    else
+      sample.status = SampleStatus::ERROR
+      sample.error = 'results nil'
+      sample.save!
+    end
   rescue Exception => e
     sample.status = SampleStatus::ERROR
     sample.error = e.message
@@ -50,10 +63,15 @@ class Performator
   def run_bench_file(file)
     cmd = %Q<#{RUBY} "#{file.path}">
 
-    results = nil
-    IO.popen(cmd, 'w+') do |io|
-      output = io.read
-      results = YAML.load(output) rescue nil
+    results = {}
+
+    begin
+      Timeout::timeout(TIMEOUT) do
+        output = `#{cmd}`
+        results = YAML.load(output) rescue nil
+      end
+    rescue Timeout::Error => e
+      results[:timeout] = true
     end
 
     results
@@ -61,6 +79,11 @@ class Performator
 
   def parse_code(code)
     raise 'Please keep comments in the code' if !code.include?('# benchmark')
+
+    policy = RubyCop::Policy.new
+    ast = RubyCop::NodeBuilder.build(code)
+    raise 'Unsafe code!' unless ast.accept(policy)
+
     h = {}
     h[:init], h[:bench] = code.gsub('(do not delete the comment)', '').split('# benchmark')
     h

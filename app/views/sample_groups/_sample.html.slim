@@ -1,0 +1,26 @@
+.sample-info
+  h3
+    .state-icon.rotating title="In queue"
+      i.icon-cog
+
+    =sample.title
+
+  .highlight
+    pre= sample.code
+
+  .sample-stats
+    .param
+      span Sys Time
+      = sample.sys_time
+
+    .param
+      span User Time
+      = sample.user_time
+
+    .param
+      span Real Time
+      = sample.real_time
+
+    .param
+      span Memory
+      = sample.memory

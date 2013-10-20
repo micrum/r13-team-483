@@ -1,4 +1,7 @@
 
+$box-border-color: #a8bfd9;
+$box-bg-color: #EDF1F5;
+
 
 .benchmark-preview {
   h3 {
@@ -12,8 +15,8 @@
 
 
   .sample {
-    border: 1px solid #b8eafe;
-    background-color: #EFF3F8;
+    border: 1px solid $box-border-color;
+    background-color: $box-bg-color;
     height: 30px;
     line-height: 26px;
     margin-bottom: 4px;
@@ -30,11 +33,110 @@
   }
 
   .bar {
-    background-color: #9ad6fa;
+    background-color: $box-border-color;
     position: absolute;
     top: 0;
     left: 0;
     height: 26px;
   }
-
 }
+
+
+
+.sample-info {
+  $gap: 10px;
+
+  border: 1px solid $box-border-color;
+  background-color: $box-bg-color;
+  padding: 0;
+  margin-bottom: 32px;
+  border-radius: 4px;
+
+  h3 {
+    margin: $gap;
+  }
+
+  .state-icon {
+    float: left;
+    margin-left: 6px;
+    margin-right: 12px;
+  }
+
+  .highlight pre {
+    background-color: white;
+    padding: $gap;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-color: $box-border-color;
+    margin-bottom: 0;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+
+  .sample-stats {
+    display: table;
+    width: 100%
+  }
+
+  .param {
+    display: table-cell;
+    width: 25%;
+    border-left: 1px solid $box-border-color;
+    padding: $gap;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+
+    span {
+      font-size: 12px;
+      display: block;
+      text-transform: uppercase;
+      color: #808080;
+    }
+  }
+
+
+  .param:first-child {
+    border: none;
+  }
+}
+
+
+.highlight {
+  .numbers {
+    float: left;
+    width: 2em;
+    margin-right: .5em;
+    text-align: right;
+    font-family: monospace;
+    color: #CCC;
+  }
+}
+
+
+
+
+
+.rotating {
+  -webkit-animation-name: rotate;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: rotate;
+  -moz-animation-duration: 5s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+}
+
+
+@-webkit-keyframes rotate {
+  from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes rotate {
+  from {-moz-transform: rotate(0deg);}
+  to {-moz-transform: rotate(360deg);}
+}
+

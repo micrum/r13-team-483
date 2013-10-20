@@ -42,6 +42,7 @@ describe Performator do
   describe '#run_sample' do
     let(:sample) { Fabricate(:sample) }
     let(:bad_sample) { Fabricate(:bad_sample) }
+    let(:timeout_sample) { Fabricate(:timeout_sample) }
 
     it 'updates sys_time, user_time, real_time columns' do
       perf.send(:run_sample, sample)
@@ -59,6 +60,34 @@ describe Performator do
     it 'sets ERROR status for bad code' do
       perf.send(:run_sample, bad_sample)
       expect(bad_sample.status).to eq(SampleStatus::ERROR)
+    end
+
+    it 'sets TIMEOUT status for long running code' do
+      perf.send(:run_sample, timeout_sample)
+      sleep(Performator::TIMEOUT + 1)
+      timeout_sample.reload
+      expect(timeout_sample.status).to eq(SampleStatus::TIMEOUT)
+    end
+
+    it 'sets ERROR status for unsafe code `rm *`' do
+      unsafe_sample = Fabricate(:unsafe_sample_1)
+      perf.send(:run_sample, unsafe_sample)
+      expect(unsafe_sample.status).to eq(SampleStatus::ERROR)
+      expect(unsafe_sample.error).to include('Unsafe')
+    end
+
+    it 'sets ERROR status for unsafe code system("rm *")' do
+      unsafe_sample = Fabricate(:unsafe_sample_2)
+      perf.send(:run_sample, unsafe_sample)
+      expect(unsafe_sample.status).to eq(SampleStatus::ERROR)
+      expect(unsafe_sample.error).to include('Unsafe')
+    end
+
+    it 'sets ERROR status for unsafe code File.read("/etc/passwd")' do
+      unsafe_sample = Fabricate(:unsafe_sample_3)
+      perf.send(:run_sample, unsafe_sample)
+      expect(unsafe_sample.status).to eq(SampleStatus::ERROR)
+      expect(unsafe_sample.error).to include('Unsafe')
     end
   end
 

@@ -5,6 +5,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'font-awesome-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'figaro'
@@ -18,6 +19,7 @@ gem 'capistrano', '~> 2.15'
 
 gem 'daemons'
 gem 'delayed_job_active_record'
+gem 'ruby_cop'
 
 group :development do
   gem 'puma'

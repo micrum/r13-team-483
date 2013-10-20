@@ -24,6 +24,10 @@ class SampleGroup < ActiveRecord::Base
   def run_benchmark
     raise RuntimeError 'Cannot run benchmark for unsaved SampleGroup' if new_record?
 
+    samples.each do |sample|
+      sample.update_attributes!(status: SampleStatus::PENDING) unless sample.status
+    end
+
     Performator.new.delay.run(self.id)
   end
 
