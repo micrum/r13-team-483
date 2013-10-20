@@ -63,4 +63,11 @@ module ApplicationHelper
             end
     "<span class='label label-#{klass}'>#{st[status - 1]}</span>".html_safe
   end
+
+  def calc_percentage(cur, max)
+    return 0 unless cur
+    return 0 unless max
+
+    cur.to_f / max * 100
+  end
 end

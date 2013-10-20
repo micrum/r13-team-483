@@ -195,4 +195,19 @@ table.sample-results {
   td.title {
     white-space: nowrap;
   }
+
+  td.time, td.memory  {
+    text-align: center;
+    .progress {
+      margin-bottom: 0;
+      border: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .progress-bar {
+      overflow: visible;
+    }
+  }
+
 }

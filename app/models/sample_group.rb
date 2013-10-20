@@ -35,5 +35,9 @@ class SampleGroup < ActiveRecord::Base
     samples.maximum(:real_time)
   end
 
+  def largest_sample
+    samples.maximum(:memory)
+  end
+
 
 end
