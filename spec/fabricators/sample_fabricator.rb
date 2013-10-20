@@ -55,4 +55,12 @@ CODE
 
 end
 
+Fabricator(:stdout_sample, from: :sample) do
+  code <<CODE
+# benchmark
+puts 'asd'
+CODE
+
+end
+
 
