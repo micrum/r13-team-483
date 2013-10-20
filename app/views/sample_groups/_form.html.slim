@@ -1,8 +1,8 @@
 = nested_form_for @sample_group, html: {class: 'form-horizontal'} do |f|
   - if @sample_group.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@sample_group.errors.count, 'error')} prohibited this sample_group from being saved:"
-      ul
+    .alert.alert-danger#error_explanation
+      h3 = "#{pluralize(@sample_group.errors.count, 'error')} prohibited this sample_group from being saved:"
+      ul.text-danger
         - @sample_group.errors.full_messages.each do |message|
           li = message
 
