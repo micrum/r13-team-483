@@ -15,9 +15,23 @@
 #= require bootstrap.js
 #= require turbolinks
 #= require codemirror
+#= require codemirror/modes/ruby
 #= require jquery_nested_form
 #= require_tree .
 #= require_self
+
+
+initCodeMirror = ->
+  $('textarea.code').each (i, ta) ->
+    CodeMirror.fromTextArea(ta, {
+      mode: 'ruby',
+      theme: 'default',
+      lineNumbers: true
+    });
+
+$(document).ready(initCodeMirror)
+$(document).on('page:load', initCodeMirror)
+
 
 
 
