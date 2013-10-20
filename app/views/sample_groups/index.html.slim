@@ -1,8 +1,19 @@
-.jumbotron
-  h1 Measure speed of your Ruby code online!
-  p.lead Just click the button below and add Ruby code samples you want to compare.
-  p
-    a.btn.btn-lg.btn-success.centered href=new_sample_group_path Benchmark my code!
+.jumbotron.clearfix style='padding-left: 10px; padding-right: 20px'
+  .col-lg-4
+    textarea class='form-control code' rows='14'
+      | # init (keep the comment)
+        arr = [0] * 1_000
+
+        # benchmark (keep the comment)
+        1000000.times do
+          arr.size
+        end
+
+  .col-lg-8
+    h1 Measure speed of your Ruby code!
+    p.lead Just click the button below and add Ruby code samples you want to compare.
+    p
+      a.btn.btn-lg.btn-success.centered href=new_sample_group_path Benchmark my code!
 
 
 h2 Latest benchmarks
