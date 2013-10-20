@@ -1,11 +1,21 @@
 require 'benchmark'
 require 'yaml'
+require 'timeout'
 
+m = nil
+begin
+Timeout::timeout(<%= timeout %>) do
 <%= init  %>
 
 m = Benchmark.measure do
 <%= bench  %>
 end
+end
+rescue Timeout::Error
+puts YAML.dump({timeout: true})
+exit
+end
+
 
 _,memory = `ps ax -o pid,rss | grep -E "^[[:space:]]*#{$$}"`.strip.split.map(&:to_i)
 r = {}

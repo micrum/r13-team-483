@@ -45,4 +45,22 @@ module ApplicationHelper
     duration = '< 1' if duration == 0
     "#{duration} µs"
   end
+
+  def format_status(status)
+    return nil unless status
+    st = %w(Pending Running Completed Error Timeout)
+    klass = case(status)
+              when 1
+                'default'
+              when 2
+                'primary'
+              when 3
+                'success'
+              when 4
+                'danger'
+              when 5
+                'warning'
+            end
+    "<span class='label label-#{klass}'>#{st[status - 1]}</span>".html_safe
+  end
 end
