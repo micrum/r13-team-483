@@ -1,8 +1,11 @@
 h2 Latest benchmarks
 
+= will_paginate @sample_groups
+
 .benchmarks.col-lg-16
   = render partial: 'sample_group', collection: @sample_groups
 
+= will_paginate @sample_groups
 
 - content_for :js
   coffee:

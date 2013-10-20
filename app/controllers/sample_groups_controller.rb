@@ -4,7 +4,7 @@ class SampleGroupsController < ApplicationController
 
 
   def index
-    @sample_groups = SampleGroup.order('updated_at DESC').first(6)
+    @sample_groups = SampleGroup.order('updated_at DESC').paginate(:page => params[:page], :per_page => 6)
     @demo_group = SampleGroup.new(title: 'Benchmark demo')
     @demo_group.samples.build(title: 'Test sample', code: sample_code)
   end

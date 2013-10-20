@@ -69,6 +69,12 @@ describe Performator do
       expect(timeout_sample.status).to eq(SampleStatus::TIMEOUT)
     end
 
+    it 'handles correctly scripts that output to stdout' do
+      stdout_sample = Fabricate(:stdout_sample)
+      perf.send(:run_sample, stdout_sample)
+      expect(stdout_sample.status).to eq(SampleStatus::COMPLETED)
+    end
+
     #it 'sets ERROR status for unsafe code `rm *`' do
     #  unsafe_sample = Fabricate(:unsafe_sample_1)
     #  perf.send(:run_sample, unsafe_sample)

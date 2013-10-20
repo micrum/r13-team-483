@@ -2,13 +2,23 @@ require 'benchmark'
 require 'yaml'
 require 'timeout'
 
+def silence_stdout
+$stdout = File.new( '/dev/null', 'w' )
+yield
+ensure
+$stdout = STDOUT
+end
+
+
 m = nil
 begin
 Timeout::timeout(<%= timeout %>) do
+silence_stdout do
 <%= init  %>
 
 m = Benchmark.measure do
 <%= bench  %>
+end
 end
 end
 rescue Timeout::Error
