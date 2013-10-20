@@ -226,7 +226,7 @@ Sample.create(
         # init (do not delete the comment)
         text="a"*10000000
         # benchmark (do not delete the comment)
-        puts  "some text, #{text}"
+        puts  "some text, #{'text'}"
 CODE
         ),
 
