@@ -5,6 +5,8 @@ class SampleGroupsController < ApplicationController
 
   def index
     @sample_groups = SampleGroup.last(6)
+    @demo_group = SampleGroup.new(title: 'Benchmark demo')
+    @demo_group.samples.build(title: 'Test sample', code: sample_code)
   end
 
 
@@ -13,18 +15,10 @@ class SampleGroupsController < ApplicationController
 
 
   def new
-    @sample_group = SampleGroup.new
-    sample = @sample_group.samples.build
-    sample.code = <<CODE
-# init (do not delete the comment)
-arr = [0] * 1_000
+    b_params = params[:sample_group] ? sample_group_params : nil
 
-# benchmark (do not delete the comment)
-1000000.times do
-  arr.size
-end
-CODE
-
+    @sample_group = SampleGroup.new(b_params)
+    @sample_group.samples.build(code: sample_code) if @sample_group.samples.empty?
   end
 
 
@@ -40,7 +34,7 @@ CODE
 
         @sample_group.run_benchmark
 
-        format.html { redirect_to @sample_group, notice: 'Sample was successfully created.' }
+        format.html { redirect_to edit_sample_group_path(@sample_group), notice: 'Sample was successfully created.' }
         format.json { render action: 'show', status: :created, location: @sample_group }
       else
         format.html { render action: 'new' }
@@ -62,6 +56,18 @@ CODE
   end
 
   private
+
+  def sample_code
+    <<CODE
+# init (do not delete the comment)
+arr = [0] * 1_000
+
+# benchmark (do not delete the comment)
+1000000.times do
+  arr.size
+end
+CODE
+  end
 
   def set_sample_group
     @sample_group = SampleGroup.find(params[:id])
