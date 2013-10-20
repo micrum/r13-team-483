@@ -1,7 +1,4 @@
 .benchmark-sample.well
-
-  #samples
-
   = f.fields_for :samples do |ef|
     .form-group
       = ef.label :title, 'Code sample title', class: 'col-lg-2 control-label'
@@ -12,6 +9,8 @@
       = ef.label :code, 'Code sample', class: 'col-lg-2 control-label'
       .col-lg-6
         = ef.text_area :code, class: 'form-control code', rows: 13
+
+    #samples
 
   .form-group style="margin-bottom: 0"
     .col-lg-offset-2.col-lg-6
