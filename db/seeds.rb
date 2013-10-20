@@ -193,3 +193,68 @@ CODE
 
 sample_group_10.run_benchmark
 
+
+
+
+#sample #8
+
+sample_group_8 = SampleGroup.create(title: '.concat array ',
+                                    description: 'sample with concatenated arrays')
+
+Sample.create(
+    title: '+',
+    code:
+        (<<CODE
+        (1..1000000).to_a+(1..10000).to_a
+CODE
+        ),
+    sample_group: sample_group_8
+)
+Sample.create(
+    title: 'concat',
+    code:
+        (<<CODE
+    (1..1000000).to_a.concat((1..10000).to_a)
+CODE
+        ),
+    sample_group: sample_group_8
+)
+
+sample_group_8.run_benchmark
+
+
+#sample #6
+
+sample_group_6 = SampleGroup.create(title: 'interpolating vs concatenating ',
+                                    description: 'interpolated strings and concatenated strings')
+
+Sample.create(
+    title: 'interpolating',
+    code:
+        (<<CODE
+        text="a"*10000000
+        puts  "some text, #{'text'}"
+CODE
+        ),
+
+    sample_group: sample_group_6
+)
+Sample.create(
+    title: 'cont',
+    code:
+        (<<CODE
+        text="a"*10000000
+        puts  "some text, "<<text
+CODE
+        ),
+
+    sample_group: sample_group_6
+)
+
+sample_group_6.run_benchmark
+
+
+
+
+
+
