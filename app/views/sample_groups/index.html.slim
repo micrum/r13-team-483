@@ -20,8 +20,7 @@
 h2 Latest benchmarks
 
 .benchmarks.col-lg-16
-  - @sample_groups.each do |sample_group|
-    = render partial: 'sample_group', locals: {sample_group: sample_group}
+  = render partial: 'sample_group', collection: @sample_groups
 
 
 - content_for :js
