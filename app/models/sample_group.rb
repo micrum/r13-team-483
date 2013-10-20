@@ -15,12 +15,11 @@ class SampleGroup < ActiveRecord::Base
 
     samples.each do |sample|
       samples_results << {id: sample.id, title: sample.status, status: sample.status, systime: sample.sys_time, realtime: sample.real_time,
-       usertime: sample.user_time, memory: sample.memory}
+                          usertime: sample.user_time, memory: sample.memory}
     end
     data << {samples: samples_results}
 
   end
-
 
   def run_benchmark
     raise RuntimeError 'Cannot run benchmark for unsaved SampleGroup' if new_record?
@@ -34,6 +33,10 @@ class SampleGroup < ActiveRecord::Base
 
   def slowest_sample
     samples.maximum(:real_time)
+  end
+
+  def largest_sample
+    samples.maximum(:memory)
   end
 
 

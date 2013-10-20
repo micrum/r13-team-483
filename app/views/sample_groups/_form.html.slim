@@ -1,4 +1,4 @@
-= nested_form_for @sample_group, url: @sample_group.new_record? ? sample_groups_path : sample_group_path(@sample_group), \
+= simple_nested_form_for @sample_group, url: @sample_group.new_record? ? sample_groups_path : sample_group_path(@sample_group), \
                                  html: {class: 'form-horizontal'} do |f|
   - if @sample_group.errors.any?
     .row
@@ -8,8 +8,8 @@
             - @sample_group.errors.full_messages.each do |message|
               li = message
 
-  .form-group
-    = f.label :title, class: 'col-lg-2 control-label'
+  .form-group class = (@sample_group.errors[:title].blank? ? '' : 'has-error')
+    = f.label :title, class: 'col-lg-2 control-label', required: true
     .col-lg-6
       = f.text_field :title, class: 'form-control'
 

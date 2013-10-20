@@ -43,6 +43,12 @@ class SampleGroupsController < ApplicationController
     end
   end
 
+  def results
+    sample_group = SampleGroup.find(params[:sample_group_id])
+    @data = sample_group.samples_results
+    render json: @data
+  end
+
 
   def run
     @sample_group.run_benchmark

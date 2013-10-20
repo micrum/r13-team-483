@@ -8,13 +8,23 @@
 
     table class='table table-bordered sample-results'
       tr
-        th class='time' Time
-        th class='memory' Memory
-        th class='title' Title
-        th class='status' Status
+        th.time Time
+        th.memory Memory
+        th.title Title
+        th.status Status
+      - slowest = sample_group.slowest_sample
+      - largest = sample_group.largest_sample
       - sample_group.samples.each do |sample|
         tr
-          td= format_time(sample.real_time)
-          td= number_to_human_size(sample.memory)
-          td class='title'= sample.title.truncate(80)
-          td= format_status(sample.status)
+          td.time
+            .progress
+              .progress-bar style="width: #{calc_percentage(sample.real_time, slowest)}%;"
+                = format_time(sample.real_time)
+
+          td.memory
+            .progress
+              .progress-bar style="width: #{calc_percentage(sample.memory, largest)}%;"
+                = number_to_human_size(sample.memory)
+
+          td.title= sample.title.truncate(80)
+          td.status= format_status(sample.status)

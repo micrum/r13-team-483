@@ -31,4 +31,13 @@
 
     return
 
+  drow_plots: (id)->
+    horizontal = true
+    $.ajax
+      url: id + '/results.json',
+      method: 'get',
+      success: (data)->
+        alert data[0].all_systime.each ->
+          alert this
+
 }
