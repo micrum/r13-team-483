@@ -1,9 +1,14 @@
 .sample-info
   h3
-    .state-icon title="In queue"
-      i.icon-cog
+    .row
+      .state-icon title="In queue"
+        i.icon-cog
+      = sample.title
 
-    =sample.title
+  -if sample.error
+    .errors_row
+      = sample.error
+
 
   .highlight
 
