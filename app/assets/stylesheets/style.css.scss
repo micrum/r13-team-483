@@ -140,3 +140,11 @@ $box-bg-color: #EDF1F5;
   to {-moz-transform: rotate(360deg);}
 }
 
+.benchmark-sample.well {
+  padding: 19px 0;
+}
+
+textarea.form-control.code {
+  font-family: monospace;
+}
+

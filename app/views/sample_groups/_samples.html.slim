@@ -2,10 +2,10 @@
   .benchmark-sample.well
     .form-group
       = ef.label :title, 'Code sample title', class: 'col-lg-2 control-label'
-      .col-lg-10
+      .col-lg-6
         = ef.text_field :title, class: 'form-control', placeholder: 'Code sample title'
 
     .form-group
       = ef.label :code, 'Code sample', class: 'col-lg-2 control-label'
-      .col-lg-10
-        = ef.text_area :code, class: 'form-control'
+      .col-lg-6
+        = ef.text_area :code, class: 'form-control code', rows: 15

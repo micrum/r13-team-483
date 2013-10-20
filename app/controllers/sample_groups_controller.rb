@@ -14,7 +14,7 @@ class SampleGroupsController < ApplicationController
 
   def new
     @sample_group = SampleGroup.new
-    2.times { @sample_group.samples.build }
+    @sample_group.samples.build
   end
 
 

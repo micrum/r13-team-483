@@ -8,16 +8,17 @@
 
   .form-group
     = f.label :title, class: 'col-lg-2 control-label'
-    .col-lg-10
+    .col-lg-6
       = f.text_field :title, class: 'form-control'
 
 
   .form-group
     = f.label :description, class: 'col-lg-2 control-label'
-    .col-lg-10
+    .col-lg-6
       = f.text_area :description, class: 'form-control', placeholder: 'Type some description here'
 
   #samples
+  br
 
   = render partial: 'sample_groups/samples', locals: {f: f}
 
