@@ -38,4 +38,11 @@ module ApplicationHelper
   def html_safe_for_str(str)
     ActiveSupport::SafeBuffer.new(str)
   end
+
+  def format_time(duration)
+    return '-' unless duration
+    duration = (duration * 1000).to_i
+    duration = '< 1' if duration == 0
+    "#{duration} µs"
+  end
 end

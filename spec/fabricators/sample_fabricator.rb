@@ -1,4 +1,6 @@
 Fabricator(:sample) do
+  title 'title'
+
   code <<CODE
 # init (do not delete the comment)
 arr = [0] * 1_000
