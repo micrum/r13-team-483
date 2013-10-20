@@ -4,5 +4,45 @@ p= @sample_group.description
 - @sample_group.samples.each do |sample|
   = render partial: 'sample', locals: {sample: sample}
 
+table class='table table-bordered sample-results sample-detailed-results'
+  tr
+    th.title Title
+    th.status Status
+    th.realtime Real Time
+    th.systime Sys Time
+    th.usertime User Time
+    th.memory Memory
+  - slowest = @sample_group.slowest_sample
+  - largest = @sample_group.largest_sample
+  - @sample_group.samples.each do |sample|
+    tr
+      td.title= sample.title.truncate(80)
+      td.status= format_status(sample.status)
+      td.realtime
+        .progress
+          = format_time(sample.real_time) if calc_percentage(sample.real_time, slowest) < 40
+          .progress-bar.progress-bar-success style="width: #{calc_percentage(sample.real_time, slowest)}%;"
+            = format_time(sample.real_time) unless calc_percentage(sample.real_time, slowest) < 40
+
+      td.systime
+        .progress
+          = format_time(sample.sys_time) if calc_percentage(sample.sys_time, slowest) < 40
+          .progress-bar.progress-bar-success style="width: #{calc_percentage(sample.sys_time, slowest)}%;"
+            = format_time(sample.sys_time) unless calc_percentage(sample.sys_time, slowest) < 40
+
+      td.usertime
+        .progress
+          = format_time(sample.user_time) if calc_percentage(sample.user_time, slowest) < 40
+          .progress-bar.progress-bar-success style="width: #{calc_percentage(sample.user_time, slowest)}%;"
+            = format_time(sample.user_time) unless calc_percentage(sample.user_time, slowest) < 40
+
+      td.memory
+        .progress
+          = format_time(sample.memory) if calc_percentage(sample.memory, largest) < 40
+          .progress-bar style="width: #{calc_percentage(sample.memory, largest)}%;"
+            = number_to_human_size(sample.memory) unless calc_percentage(sample.memory, largest) < 40
+
+
+
 
 = link_to 'Edit', edit_sample_group_path(@sample_group)
