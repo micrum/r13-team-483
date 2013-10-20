@@ -32,7 +32,9 @@ initCodeMirror = ->
 
 ready = ->
   initCodeMirror()
-  $("form").on("nested:fieldAdded", initCodeMirror)
+  $("form").on "nested:fieldAdded", (event) ->
+    event.field.find('textarea').html('\n\n\n\n\n')
+    initCodeMirror()
 
 
 $(document).ready(ready)

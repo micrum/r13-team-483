@@ -3,6 +3,7 @@ RubyBench::Application.routes.draw do
   resources :samples
 
   resources :sample_groups, path: 'benchmark' do
+    get 'results', :to => 'sample_groups#results'
     if Rails.env.development?
       member do
         get 'run' => 'sample_groups#run'

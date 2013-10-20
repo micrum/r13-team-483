@@ -55,6 +55,12 @@ CODE
     redirect_to sample_group_path(@sample_group)
   end
 
+  def results
+    sample_group = SampleGroup.find(params[:sample_group_id])
+    @data = sample_group.samples_results
+    render json: @data
+  end
+
   private
 
   def set_sample_group

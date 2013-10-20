@@ -159,7 +159,20 @@ $box-bg-color: #EDF1F5;
   .CodeMirror {
     font-size: 14px;
     height: 215px;
-    border: 1px solid $box-border-color;
     text-align: left;
   }
+}
+
+.CodeMirror-linenumbers {
+  min-width: 37px;
+}
+
+.CodeMirror {
+  border: 1px solid $box-border-color;
+  height: auto;
+}
+
+.CodeMirror-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
 }

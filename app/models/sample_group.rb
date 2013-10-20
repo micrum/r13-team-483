@@ -5,6 +5,22 @@ class SampleGroup < ActiveRecord::Base
 
   validates_presence_of :title
 
+  def samples_results
+    samples = self.samples
+
+    data = []
+    samples_results = []
+
+    data << {title: self.title, description: self.description}
+
+    samples.each do |sample|
+      samples_results << {id: sample.id, title: sample.status, status: sample.status, systime: sample.sys_time, realtime: sample.real_time,
+       usertime: sample.user_time, memory: sample.memory}
+    end
+    data << {samples: samples_results}
+
+  end
+
 
   def run_benchmark
     raise RuntimeError 'Cannot run benchmark for unsaved SampleGroup' if new_record?
