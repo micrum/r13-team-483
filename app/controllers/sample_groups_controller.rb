@@ -65,9 +65,11 @@ class SampleGroupsController < ApplicationController
   def sample_code
     <<CODE
 # init (do not delete the comment)
+# please write your initialization code below
 arr = [0] * 1_000
 
 # benchmark (do not delete the comment)
+# please write your code to test below
 1000000.times do
   arr.size
 end
