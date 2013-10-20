@@ -23,14 +23,22 @@
 
 initCodeMirror = ->
   $('textarea.code').each (i, ta) ->
-    CodeMirror.fromTextArea(ta, {
-      mode: 'ruby',
-      theme: 'default',
-      lineNumbers: true
-    });
+    if $(ta).is(':visible')
+      CodeMirror.fromTextArea(ta, {
+        mode: 'ruby',
+        theme: 'default',
+        lineNumbers: true
+      });
 
-$(document).ready(initCodeMirror)
-$(document).on('page:load', initCodeMirror)
+ready = ->
+  initCodeMirror()
+  $("form").on("nested:fieldAdded", initCodeMirror)
+
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
+
+
 
 
 
