@@ -43,7 +43,7 @@ module ApplicationHelper
     return '-' unless duration
     duration = (duration * 1000).to_i
     duration = '< 1' if duration == 0
-    "#{duration} µs"
+    "#{duration} ms"
   end
 
   def format_status(status)
