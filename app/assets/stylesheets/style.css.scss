@@ -1,6 +1,6 @@
 
-$box-border-color: #9ad6fa;
-$box-bg-color: #EFF3F8;
+$box-border-color: #a8bfd9;
+$box-bg-color: #EDF1F5;
 
 
 .benchmark-preview {
@@ -86,12 +86,24 @@ $box-bg-color: #EFF3F8;
       font-size: 12px;
       display: block;
       text-transform: uppercase;
-      color: gray;
+      color: #808080;
     }
   }
 
 
   .param:first-child {
     border: none;
+  }
+}
+
+
+.highlight {
+  .numbers {
+    float: left;
+    width: 2em;
+    margin-right: .5em;
+    text-align: right;
+    font-family: monospace;
+    color: #CCC;
   }
 }
