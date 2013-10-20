@@ -1,12 +1,12 @@
 .benchmark-sample.well
-  = f.fields_for :samples do |ef|
+  = f.simple_fields_for :samples do |ef|
     .form-group
       = ef.label :title, 'Code sample title', class: 'col-lg-2 control-label'
       .col-lg-6
         = ef.text_field :title, class: 'form-control', placeholder: 'Code sample title'
 
     .form-group
-      = ef.label :code, 'Code sample', class: 'col-lg-2 control-label'
+      = ef.label :code, 'Code sample', class: 'col-lg-2 control-label', required: true
       .col-lg-6
         = ef.text_area :code, class: 'form-control code', rows: 13
 
