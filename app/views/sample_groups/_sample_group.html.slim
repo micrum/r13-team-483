@@ -6,15 +6,15 @@
 
     br
 
-    table class='table table-bordered'
+    table class='table table-bordered sample-results'
       tr
-        th Time
-        th Memory
-        th Title
-        th Status
+        th class='time' Time
+        th class='memory' Memory
+        th class='title' Title
+        th class='status' Status
       - sample_group.samples.each do |sample|
         tr
           td= format_time(sample.real_time)
           td= number_to_human_size(sample.memory)
-          td= sample.title
-          td= sample.status
+          td class='title'= sample.title.truncate(80)
+          td= format_status(sample.status)
