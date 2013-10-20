@@ -73,7 +73,7 @@
     that = @
     hasPendingOrRunning = false
 
-    $.each(samples, (index, sampleData) ->
+    $.each samples, (index, sampleData) ->
       $elem = $('.sample-info[data-sample-id="' + sampleData['id'] + '"]')
       that.updateSampleData($elem, sampleData)
 
@@ -82,7 +82,6 @@
 
       if !hasPendingOrRunning
         @.finishPing = true
-
 
   pingSamples: ->
     app = @
