@@ -16,7 +16,8 @@ RubyBench::Application.routes.draw do
     end
   end
 
-  root :to => 'sample_groups#index'
+  root :to => 'home#index'
+  #root :to => 'sample_groups#index'
 
 end
 
