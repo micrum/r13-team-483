@@ -1,9 +1,11 @@
-.benchmark-sample.well
+.benchmark-sample#samples
   = f.simple_fields_for :samples do |ef|
+    hr
     .form-group
       = ef.label :title, 'Code sample title', class: 'col-lg-2 control-label'
       .col-lg-6
         = ef.text_field :title, class: 'form-control', placeholder: 'Code sample title'
+      .col-lg-2= f.link_to_remove 'Remove sample', class: 'btn btn-danger'
 
     .form-group class = (@sample_group.errors["samples.code"].blank? ? '' : 'has-error')
       abbr title="required"
@@ -11,9 +13,9 @@
       .col-lg-6
         = ef.text_area :code, class: 'form-control code'
 
-    #samples
+.form-group
+  .col-lg-offset-2.col-lg-6
+    = f.link_to_add :samples, class: 'btn btn-primary pull-right', id: :add_sample_btn, data: {target: '#samples'} do
+      = icon_label('plus', 'Add code sample', white: false)
 
-  .form-group style="margin-bottom: 0"
-    .col-lg-offset-2.col-lg-6
-      = f.link_to_add :samples, class: 'btn btn-primary pull-right', id: :add_sample_btn, data: {target: '#samples'} do
-        = icon_label('plus', 'Add code sample', white: false)
+

@@ -40,6 +40,8 @@ class SampleGroupsController < ApplicationController
 
   def update
     if @sample_group.update(sample_group_params)
+      @sample_group.run_benchmark
+
       redirect_to @sample_group, notice: 'Benchmark was successfully updated.'
     else
       render action: 'edit'

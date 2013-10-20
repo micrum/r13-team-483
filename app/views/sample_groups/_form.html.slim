@@ -19,13 +19,23 @@
     .col-lg-6
       = f.text_area :description, class: 'form-control', placeholder: 'Type some description here'
 
-  br
 
   = render partial: 'sample_groups/samples', locals: {f: f}
 
+
+
+
   .form-group
-    .col-lg-offset-2.col-lg-6
-      button.btn.btn-lg.btn-success.centered.btn-block type="submit" Run Benchmark!
+    - if @sample_group.new_record?
+      .col-lg-offset-2.col-lg-6
+        button.btn.btn-lg.btn-success.btn-block type="submit" Start benchmark!
+
+    - else
+      .col-lg-2
+        = link_to 'Back to results', @sample_group, class: 'btn btn-default btn-block btn-lg'
+
+      .col-lg-6
+        button.btn.btn-lg.btn-success.btn-block type="submit" Start benchmark!
 
 
 
