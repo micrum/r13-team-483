@@ -58,10 +58,11 @@ Sample.create(
     title: '+= sample',
     code:
     (<<CODE
-    # init (do not delete the comment)
-      a = ""
-    # benchmark (do not delete the comment)
-        10000.times { a += "." }
+# init (do not delete the comment)
+a = ""
+
+# benchmark (do not delete the comment)
+100000.times { a += "." }
 CODE
     ),
 
@@ -71,10 +72,11 @@ Sample.create(
     title: 'shovel sample',
     code:
         (<<CODE
-         # init (do not delete the comment)
-        a = ""
-        # benchmark (do not delete the comment)
-        10000.times { a << "." }
+# init (do not delete the comment)
+a = ""
+
+# benchmark (do not delete the comment)
+100000.times { a << "." }
 CODE
         ),
 
@@ -94,9 +96,10 @@ Sample.create(
     title: 'collect',
     code:
         (<<CODE
-           # init (do not delete the comment)
-          # benchmark (do not delete the comment)
-          (1..100000).to_a.collect!
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..100000).to_a.collect!
 CODE
         ),
     sample_group: sample_group_7
@@ -105,9 +108,10 @@ Sample.create(
     title: 'collect!',
     code:
         (<<CODE
-     # init (do not delete the comment)
-          # benchmark (do not delete the comment)
-    (1..100000).to_a.collect
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..100000).to_a.collect
 CODE
         ),
     sample_group: sample_group_7
@@ -126,9 +130,10 @@ Sample.create(
     title: '+',
     code:
         (<<CODE
-        # init (do not delete the comment)
-          # benchmark (do not delete the comment)
-        (1..10000).to_a.compact!
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..10000).to_a.compact!
 CODE
         ),
     sample_group: sample_group_9
@@ -137,9 +142,10 @@ Sample.create(
     title: 'concat',
     code:
         (<<CODE
-         # init (do not delete the comment)
-          # benchmark (do not delete the comment)
-    (1..10000).to_a.compact
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..10000).to_a.compact
 CODE
         ),
     sample_group: sample_group_9
@@ -158,9 +164,10 @@ Sample.create(
     title: 'long string',
     code:
         (<<CODE
-         # init (do not delete the comment)
-        # benchmark (do not delete the comment)
-        puts "x"+(1..10000).to_a.to_s
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+puts "x"+(1..10000).to_a.to_s
 CODE
         ),
     sample_group: sample_group_10
@@ -170,9 +177,10 @@ Sample.create(
 
     code:
         (<<CODE
-        # init (do not delete the comment)
-        # benchmark (do not delete the comment)
-        puts "x"+(1..2).to_a.to_s
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+puts "x"+(1..2).to_a.to_s
 CODE
         ),
     sample_group: sample_group_10
@@ -192,9 +200,10 @@ Sample.create(
     title: '+',
     code:
         (<<CODE
-        # init (do not delete the comment)
-        # benchmark (do not delete the comment)
-        (1..1000000).to_a+(1..10000).to_a
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..1000000).to_a+(1..10000).to_a
 CODE
         ),
     sample_group: sample_group_8
@@ -203,9 +212,10 @@ Sample.create(
     title: 'concat',
     code:
         (<<CODE
-        # init (do not delete the comment)
-        # benchmark (do not delete the comment)
-    (1..1000000).to_a.concat((1..10000).to_a)
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..1000000).to_a.concat((1..10000).to_a)
 CODE
         ),
     sample_group: sample_group_8
@@ -223,10 +233,11 @@ Sample.create(
     title: 'interpolating',
     code:
         (<<CODE
-        # init (do not delete the comment)
-        text="a"*10000000
-        # benchmark (do not delete the comment)
-        puts  "some text, #{'text'}"
+# init (do not delete the comment)
+text="a"*10000000
+
+# benchmark (do not delete the comment)
+puts  "some text, #{'text'}"
 CODE
         ),
 
@@ -236,10 +247,11 @@ Sample.create(
     title: 'cont',
     code:
         (<<CODE
-        # init (do not delete the comment)
-        text="a"*10000000
-        # benchmark (do not delete the comment)
-        puts  "some text, "<<text
+# init (do not delete the comment)
+text="a"*10000000
+
+# benchmark (do not delete the comment)
+puts  "some text, "<<text
 CODE
         ),
 
@@ -260,11 +272,12 @@ Sample.create(
     title: 'bang sample',
     code:
         (<<CODE
-         # init (do not delete the comment)
-          h1 = { "a" => 100, "b" => 200 }
-          h2 = { "b" => 254, "c" => 300 }
-          # benchmark (do not delete the comment)
-          h1.merge(h2)
+# init (do not delete the comment)
+h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
+
+# benchmark (do not delete the comment)
+h1.merge(h2)
 CODE
         ),
 
@@ -275,12 +288,12 @@ Sample.create(
     title: 'another sample',
     code:
         (<<CODE
-           # init (do not delete the comment)
-          h1 = { "a" => 100, "b" => 200 }
-          h2 = { "b" => 254, "c" => 300 }
-          # benchmark (do not delete the comment)
-          h1.merge!(h2)
+# init (do not delete the comment)
+h1 = { "a" => 100, "b" => 200 }
+h2 = { "b" => 254, "c" => 300 }
 
+# benchmark (do not delete the comment)
+h1.merge!(h2)
 CODE
         ),
 
