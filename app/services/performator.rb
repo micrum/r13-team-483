@@ -48,7 +48,7 @@ class Performator
   end
 
   def create_bench_file(sample)
-    bench_template_path = Rails.root.join('app/assets/templates/bench_file.erb')
+    bench_template_path = Rails.root.join('lib/templates/bench_file.erb')
     bench_file = Tempfile.new('bench_file')
     parsed_code = parse_code(sample.code)
     init = parsed_code[:init]
