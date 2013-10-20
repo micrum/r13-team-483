@@ -228,8 +228,6 @@ sample_group_6.run_benchmark
 
 
 
-sample_group_5.run_benchmark
-
 
 
 
