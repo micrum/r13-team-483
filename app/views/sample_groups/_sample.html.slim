@@ -1,9 +1,7 @@
-.sample-info
+.sample-info data-sample-id=sample.id
   h3
-    .row
-      .state-icon title="In queue"
-        i.icon-cog
-      = sample.title
+    .state-icon
+      i.icon-cog
 
   -if sample.error
     .errors_row
@@ -17,16 +15,16 @@
   .sample-stats
     .param
       span Sys Time
-      = format_time(sample.sys_time)
+      .val-sys-time= format_time(sample.sys_time)
 
     .param
       span User Time
-      = format_time(sample.user_time)
+      .val-user-time= format_time(sample.user_time)
 
     .param
       span Real Time
-      = format_time(sample.real_time)
+      .val-real-time= format_time(sample.real_time)
 
     .param
       span Memory
-      = number_to_human_size(sample.memory)
+      .val-memory= number_to_human_size(sample.memory)

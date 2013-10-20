@@ -84,17 +84,18 @@ $box-bg-color: #EDF1F5;
 
   .sample-stats {
     display: table;
-    width: 100%
+    width: 100%;
   }
 
   .param {
     display: table-cell;
     width: 25%;
     border-left: 1px solid $box-border-color;
-    padding: $gap;
+    padding: 4px;
     text-align: center;
     font-size: 2em;
     font-weight: bold;
+
 
     span {
       font-size: 12px;

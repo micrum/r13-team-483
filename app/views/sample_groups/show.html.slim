@@ -40,12 +40,20 @@ table class='table table-bordered sample-results sample-detailed-results'
           .progress-bar.progress-bar-success style="width: #{calc_percentage(sample.user_time, slowest)}%;"
             = format_time(sample.user_time) unless calc_percentage(sample.user_time, slowest) < 40
 
-      td.memory
-        .progress
-          = format_time(sample.memory) if calc_percentage(sample.memory, largest) < 40
-          .progress-bar style="width: #{calc_percentage(sample.memory, largest)}%;"
-            = number_to_human_size(sample.memory) unless calc_percentage(sample.memory, largest) < 40
+        td.usertime
+          .progress
+            = format_time(sample.user_time) if calc_percentage(sample.user_time, slowest) < 40
+            .progress-bar.progress-bar-success style="width: #{calc_percentage(sample.user_time, slowest)}%;"
+              = format_time(sample.user_time) unless calc_percentage(sample.user_time, slowest) < 40
+
+        td.memory
+          .progress
+            = format_time(sample.memory) if calc_percentage(sample.memory, largest) < 40
+            .progress-bar style="width: #{calc_percentage(sample.memory, largest)}%;"
+              = number_to_human_size(sample.memory) unless calc_percentage(sample.memory, largest) < 40
 
 
-
+- content_for :js
+  coffee:
+    App.initSamplePing(1)
 
