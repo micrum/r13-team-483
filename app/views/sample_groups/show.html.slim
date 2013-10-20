@@ -3,6 +3,7 @@ h1= @sample_group.title
 
 p= @sample_group.description
 
+hr
 
 - @sample_group.samples.each do |sample|
   = render partial: 'sample', locals: {sample: sample}

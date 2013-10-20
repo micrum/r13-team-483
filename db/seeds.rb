@@ -62,7 +62,7 @@ Sample.create(
 a = ""
 
 # benchmark (do not delete the comment)
-1000.times { a += "." }
+10000.times { a += "." }
 CODE
     ),
 
@@ -76,7 +76,7 @@ Sample.create(
 a = ""
 
 # benchmark (do not delete the comment)
-1000.times { a << "." }
+10000.times { a << "." }
 CODE
         ),
 
@@ -203,7 +203,7 @@ Sample.create(
 # init (do not delete the comment)
 
 # benchmark (do not delete the comment)
-(1..1000000).to_a+(1..10000).to_a
+(1..1000000).to_a + (1..10000).to_a
 CODE
         ),
     sample_group: sample_group_8
@@ -234,10 +234,10 @@ Sample.create(
     code:
         (<<CODE
 # init (do not delete the comment)
-text="a"*10000000
+text = "a" * 10000000
 
 # benchmark (do not delete the comment)
-puts  "some text, #'{text}'"
+puts  "some text, \#{text}"
 CODE
         ),
 
@@ -248,10 +248,10 @@ Sample.create(
     code:
         (<<CODE
 # init (do not delete the comment)
-text="a"*10000000
+text = "a" * 10000000
 
 # benchmark (do not delete the comment)
-puts  'some text' << text
+puts 'some text' << text
 CODE
         ),
 
