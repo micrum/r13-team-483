@@ -120,29 +120,6 @@ $box-bg-color: #EDF1F5;
 
 
 
-@-webkit-keyframes rotate {
-  from {-webkit-transform: rotate(0deg);}
-  to {-webkit-transform: rotate(360deg);}
-}
-
-@-moz-keyframes rotate {
-  from {-moz-transform: rotate(0deg);}
-  to {-moz-transform: rotate(360deg);}
-}
-
-.rotating {
-  -webkit-animation-name: rotate;
-  -webkit-animation-duration: 5s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  -moz-animation-name: rotate;
-  -moz-animation-duration: 5s;
-  -moz-animation-iteration-count: infinite;
-  -moz-animation-timing-function: linear;
-}
-
-
-
 .benchmark-sample.well {
   padding: 19px 0;
 }
