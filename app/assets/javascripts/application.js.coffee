@@ -27,7 +27,8 @@ initCodeMirror = ->
       CodeMirror.fromTextArea(ta, {
         mode: 'ruby',
         theme: 'default',
-        lineNumbers: true
+        lineNumbers: true,
+        readOnly: $(ta).attr('readonly')
       });
 
 ready = ->
