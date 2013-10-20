@@ -138,33 +138,6 @@ CODE
 sample_group_9.run_benchmark
 
 
-#sample #10
-
-sample_group_10 = SampleGroup.create(title: 'strings',
-                                     description: 'string with different lenth')
-
-Sample.create(
-    title: 'long string',
-    code:
-        (<<CODE
-        puts "x"+(1..100000000).to_a.to_s
-CODE
-        ),
-    sample_group: sample_group_10
-)
-Sample.create(
-    title: 'short string',
-
-    code:
-        (<<CODE
-        puts "x"+(1..2).to_a.to_s
-CODE
-        ),
-    sample_group: sample_group_10
-)
-
-sample_group_10.run_benchmark
-
 
 #sample #10
 
@@ -254,6 +227,49 @@ CODE
 sample_group_6.run_benchmark
 
 
+
+sample_group_5.run_benchmark
+
+
+
+
+
+
+#sample #4
+
+sample_group_4 = SampleGroup.create(title: 'bang! methods',
+                                    description: 'bang! methods is faster')
+
+Sample.create(
+    title: 'bang sample',
+    code:
+        (<<CODE
+
+          h1 = { "a" => 100, "b" => 200 }
+          h2 = { "b" => 254, "c" => 300 }
+          h1.merge(h2)
+CODE
+        ),
+
+
+    sample_group: sample_group_4
+)
+Sample.create(
+    title: 'another sample',
+    code:
+        (<<CODE
+
+          h1 = { "a" => 100, "b" => 200 }
+          h2 = { "b" => 254, "c" => 300 }
+          h1.merge!(h2)
+
+CODE
+        ),
+
+    sample_group: sample_group_4
+)
+
+sample_group_4.run_benchmark
 
 
 
