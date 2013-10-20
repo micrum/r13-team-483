@@ -1,4 +1,5 @@
-= nested_form_for @sample_group, html: {class: 'form-horizontal'} do |f|
+= nested_form_for @sample_group, url: @sample_group.new_record? ? sample_groups_path : sample_group_path(@sample_group), \
+                                 html: {class: 'form-horizontal'} do |f|
   - if @sample_group.errors.any?
     .row
       .col-lg-offset-2.col-lg-6

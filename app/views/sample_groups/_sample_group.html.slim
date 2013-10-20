@@ -4,10 +4,17 @@
       = link_to sample_group.title, sample_group_path(sample_group.id)
     .description= sample_group.description
 
-    .samples data-max-time=sample_group.slowest_sample
+    br
+
+    table class='table table-bordered'
+      tr
+        th Time
+        th Memory
+        th Title
+        th Status
       - sample_group.samples.each do |sample|
-        .sample
-          .sample-scale
-            .bar data-time=sample.real_time
-            span.col-lg-2.sample-time #{sample.real_time} s
-            .col-lg-10= sample.title
+        tr
+          td= format_time(sample.real_time)
+          td= number_to_human_size(sample.memory)
+          td= sample.title
+          td= sample.status

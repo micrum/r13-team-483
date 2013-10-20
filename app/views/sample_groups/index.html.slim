@@ -1,27 +1,23 @@
 .jumbotron.clearfix style='padding-left: 10px; padding-right: 20px'
-  .row
-    .col-lg-6
-      h1 Measure speed of your Ruby code!
-      p.lead Just click the button below and add Ruby code samples you want to compare.
+  = form_for @demo_group, url: new_sample_group_path do |f|
+    .row
+      .col-lg-6
+        h1 Measure speed of your Ruby code!
+        p.lead Just click the button below and add Ruby code samples you want to compare.
 
-      a.btn.btn-lg.btn-success.centered href=new_sample_group_path Measure speed of my code! -->
+        = f.hidden_field :title
+        button.btn.btn-lg.btn-success Measure speed of my code! -->
 
-    .col-lg-6
-      textarea class='form-control code'
-        | # init (keep the comment)
-          arr = [0] * 1_000
-
-          # benchmark (keep the comment)
-          1000000.times do
-            arr.size
-          end
+      .col-lg-6
+        = f.fields_for :samples do |ef|
+          = ef.hidden_field :title
+          = ef.text_area :code, class: 'form-control code'
 
 
 h2 Latest benchmarks
 
 .benchmarks.col-lg-16
-  - @sample_groups.each do |sample_group|
-    = render partial: 'sample_group', locals: {sample_group: sample_group}
+  = render partial: 'sample_group', collection: @sample_groups
 
 
 - content_for :js
