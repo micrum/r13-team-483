@@ -61,9 +61,9 @@ $box-bg-color: #EDF1F5;
     margin-right: 12px;
   }
 
-  .highlight pre {
+  .highlight {
     background-color: white;
-    padding: $gap;
+    padding: 0;
     border-radius: 0;
     border-left: none;
     border-right: none;
@@ -71,6 +71,11 @@ $box-bg-color: #EDF1F5;
     margin-bottom: 0;
     max-height: 250px;
     overflow-y: auto;
+
+    .CodeMirror {
+      border-right: none;
+      border-left: none;
+    }
   }
 
   .sample-stats {
@@ -142,6 +147,11 @@ $box-bg-color: #EDF1F5;
   padding: 19px 0;
 }
 
+
+h1 {
+  margin-top: 0;
+  font-size: 40px;
+}
 
 .jumbotron {
   padding-bottom: 30px;

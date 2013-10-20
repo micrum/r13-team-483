@@ -1,5 +1,8 @@
-h2= @sample_group.title
+= link_to 'Edit', edit_sample_group_path(@sample_group), class: 'btn btn-info pull-right'
+h1= @sample_group.title
+
 p= @sample_group.description
+
 
 - @sample_group.samples.each do |sample|
   = render partial: 'sample', locals: {sample: sample}
@@ -45,4 +48,3 @@ table class='table table-bordered sample-results sample-detailed-results'
 
 
 
-= link_to 'Edit', edit_sample_group_path(@sample_group)
