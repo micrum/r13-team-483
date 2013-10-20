@@ -279,14 +279,14 @@ sample_group_10 = SampleGroup.create(title: 'strings',
 Sample.create(
     title: 'long string',
     code:
-        puts "x"+(1..100000000).to_a.to_s,
+        puts 'x'+(1..100000000).to_a.to_s,
     sample_group: sample_group_10
 )
 Sample.create(
     title: 'short string',
 
     code:
-        puts "x"+(1..2).to_a.to_s,
+        puts 'x'+(1..2).to_a.to_s,
     sample_group: sample_group_10
 )
 
