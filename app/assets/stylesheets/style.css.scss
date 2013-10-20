@@ -176,3 +176,17 @@ $box-bg-color: #EDF1F5;
   overflow-y: hidden;
   overflow-x: auto;
 }
+
+table.sample-results {
+  th.time, th.memory {
+    width: 17%;
+  }
+
+  th.status {
+    width: 10%;
+  }
+
+  td.title {
+    white-space: nowrap;
+  }
+}
