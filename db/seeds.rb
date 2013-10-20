@@ -86,144 +86,6 @@ CODE
 sample_group_2.run_benchmark
 
 
-
-#sample #7
-
-sample_group_7 = SampleGroup.create(title: 'bang! sample ',
-                                    description: 'once more bang! sample')
-
-Sample.create(
-    title: 'collect',
-    code:
-        (<<CODE
-# init (do not delete the comment)
-
-# benchmark (do not delete the comment)
-(1..100000).to_a.collect!
-CODE
-        ),
-    sample_group: sample_group_7
-)
-Sample.create(
-    title: 'collect!',
-    code:
-        (<<CODE
-# init (do not delete the comment)
-
-# benchmark (do not delete the comment)
-(1..100000).to_a.collect
-CODE
-        ),
-    sample_group: sample_group_7
-)
-
-sample_group_7.run_benchmark
-
-
-
-#sample #9
-
-sample_group_9 = SampleGroup.create(title: 'compact method ',
-                                    description: 'compact vs compact!')
-
-Sample.create(
-    title: '+',
-    code:
-        (<<CODE
-# init (do not delete the comment)
-
-# benchmark (do not delete the comment)
-(1..10000).to_a.compact!
-CODE
-        ),
-    sample_group: sample_group_9
-)
-Sample.create(
-    title: 'concat',
-    code:
-        (<<CODE
-# init (do not delete the comment)
-
-# benchmark (do not delete the comment)
-(1..10000).to_a.compact
-CODE
-        ),
-    sample_group: sample_group_9
-)
-
-sample_group_9.run_benchmark
-
-
-
-#sample #10
-
-sample_group_10 = SampleGroup.create(title: 'strings',
-                                     description: 'string with different lenth')
-
-Sample.create(
-    title: 'long string',
-    code:
-        (<<CODE
-# init (do not delete the comment)
-
-# benchmark (do not delete the comment)
-puts "x"+(1..10000).to_a.to_s
-CODE
-        ),
-    sample_group: sample_group_10
-)
-Sample.create(
-    title: 'short string',
-
-    code:
-        (<<CODE
-# init (do not delete the comment)
-
-# benchmark (do not delete the comment)
-puts "x"+(1..2).to_a.to_s
-CODE
-        ),
-    sample_group: sample_group_10
-)
-
-sample_group_10.run_benchmark
-
-
-
-
-#sample #8
-
-sample_group_8 = SampleGroup.create(title: '.concat array ',
-                                    description: 'sample with concatenated arrays')
-
-Sample.create(
-    title: '+',
-    code:
-        (<<CODE
-# init (do not delete the comment)
-
-# benchmark (do not delete the comment)
-(1..1000000).to_a + (1..10000).to_a
-CODE
-        ),
-    sample_group: sample_group_8
-)
-Sample.create(
-    title: 'concat',
-    code:
-        (<<CODE
-# init (do not delete the comment)
-
-# benchmark (do not delete the comment)
-(1..1000000).to_a.concat((1..10000).to_a)
-CODE
-        ),
-    sample_group: sample_group_8
-)
-
-sample_group_8.run_benchmark
-
-
 #sample #6
 
 sample_group_6 = SampleGroup.create(title: 'interpolating vs concatenating ',
@@ -277,7 +139,9 @@ h1 = { "a" => 100, "b" => 200 }
 h2 = { "b" => 254, "c" => 300 }
 
 # benchmark (do not delete the comment)
+10000.times do
 h1.merge(h2)
+end
 CODE
         ),
 
@@ -293,7 +157,9 @@ h1 = { "a" => 100, "b" => 200 }
 h2 = { "b" => 254, "c" => 300 }
 
 # benchmark (do not delete the comment)
+10000.times do
 h1.merge!(h2)
+end
 CODE
         ),
 
@@ -301,6 +167,144 @@ CODE
 )
 
 sample_group_4.run_benchmark
+
+#sample #7
+
+sample_group_7 = SampleGroup.create(title: 'bang! sample ',
+                                    description: 'once more bang! sample')
+
+Sample.create(
+    title: 'collect',
+    code:
+        (<<CODE
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..100000).to_a.collect!
+CODE
+        ),
+    sample_group: sample_group_7
+)
+Sample.create(
+    title: 'collect!',
+    code:
+        (<<CODE
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..100000).to_a.collect
+CODE
+        ),
+    sample_group: sample_group_7
+)
+
+sample_group_7.run_benchmark
+
+
+
+#sample #9
+
+sample_group_9 = SampleGroup.create(title: 'compact method ',
+                                    description: 'compact vs compact!')
+
+Sample.create(
+    title: '+',
+    code:
+        (<<CODE
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..100000).to_a.compact!
+CODE
+        ),
+    sample_group: sample_group_9
+)
+Sample.create(
+    title: 'concat',
+    code:
+        (<<CODE
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..100000).to_a.compact
+CODE
+        ),
+    sample_group: sample_group_9
+)
+
+sample_group_9.run_benchmark
+
+
+
+#sample #10
+
+sample_group_10 = SampleGroup.create(title: 'strings',
+                                     description: 'string with different length')
+
+Sample.create(
+    title: 'long string',
+    code:
+        (<<CODE
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+puts "x"+(1..10000).to_a.to_s
+CODE
+        ),
+    sample_group: sample_group_10
+)
+Sample.create(
+    title: 'short string',
+
+    code:
+        (<<CODE
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+puts "x"+(1..2).to_a.to_s
+CODE
+        ),
+    sample_group: sample_group_10
+)
+
+sample_group_10.run_benchmark
+
+
+
+
+#sample #8
+
+sample_group_8 = SampleGroup.create(title: '.concat array ',
+                                    description: 'sample with concatenated arrays')
+
+Sample.create(
+    title: '+',
+    code:
+        (<<CODE
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..100000).to_a + (1..1000000).to_a
+CODE
+        ),
+    sample_group: sample_group_8
+)
+Sample.create(
+    title: 'concat',
+    code:
+        (<<CODE
+# init (do not delete the comment)
+
+# benchmark (do not delete the comment)
+(1..100000).to_a.concat((1..1000000).to_a)
+CODE
+        ),
+    sample_group: sample_group_8
+)
+
+sample_group_8.run_benchmark
+
+
 
 
 
