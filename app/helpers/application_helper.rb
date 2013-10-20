@@ -68,6 +68,15 @@ module ApplicationHelper
     return 0 unless cur
     return 0 unless max
 
-    cur.to_f / max * 100
+    p = cur.to_f / max * 100
+    p = 1 if p < 1
+    p
   end
+
+  def percent_to_color(p, reverse = false)
+    red = p<50 ? 255 : (256 - (p-50)*5.12).to_i
+    green = p>50 ? 128 :((p)*2.56).to_i
+    "rgb(#{red}, #{green}, 0)"
+  end
+
 end

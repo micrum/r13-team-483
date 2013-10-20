@@ -18,13 +18,15 @@
         tr
           td.time
             .progress
-              .progress-bar style="width: #{calc_percentage(sample.real_time, slowest)}%;"
-                = format_time(sample.real_time)
+              = format_time(sample.real_time) if calc_percentage(sample.real_time, slowest) < 40
+              .progress-bar.progress-bar-success style="width: #{calc_percentage(sample.real_time, slowest)}%;"
+                = format_time(sample.real_time) unless calc_percentage(sample.real_time, slowest) < 40
 
           td.memory
             .progress
+              = format_time(sample.memory) if calc_percentage(sample.memory, largest) < 40
               .progress-bar style="width: #{calc_percentage(sample.memory, largest)}%;"
-                = number_to_human_size(sample.memory)
+                = number_to_human_size(sample.memory) unless calc_percentage(sample.memory, largest) < 40
 
           td.title= sample.title.truncate(80)
           td.status= format_status(sample.status)
