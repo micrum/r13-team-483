@@ -62,7 +62,7 @@ Sample.create(
 a = ""
 
 # benchmark (do not delete the comment)
-100000.times { a += "." }
+1000.times { a += "." }
 CODE
     ),
 
@@ -76,7 +76,7 @@ Sample.create(
 a = ""
 
 # benchmark (do not delete the comment)
-100000.times { a << "." }
+1000.times { a << "." }
 CODE
         ),
 
@@ -237,7 +237,7 @@ Sample.create(
 text="a"*10000000
 
 # benchmark (do not delete the comment)
-puts  "some text, #{'text'}"
+puts  "some text, #'{text}'"
 CODE
         ),
 
@@ -251,7 +251,7 @@ Sample.create(
 text="a"*10000000
 
 # benchmark (do not delete the comment)
-puts  "some text, "<<text
+puts  'some text' << text
 CODE
         ),
 
