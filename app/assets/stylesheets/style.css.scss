@@ -147,6 +147,7 @@ $box-bg-color: #EDF1F5;
 .jumbotron {
   padding-bottom: 30px;
   padding-top: 30px;
+
   text-align: center;
 
 
@@ -157,8 +158,7 @@ $box-bg-color: #EDF1F5;
 
   .CodeMirror {
     font-size: 14px;
-    height: 180px;
-    margin-bottom: 16px;
+    height: 215px;
     border: 1px solid $box-border-color;
     text-align: left;
   }
